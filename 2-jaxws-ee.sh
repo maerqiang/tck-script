@@ -1,13 +1,11 @@
 echo "*********************************"
 echo "run jaxws/ee tests..."
 echo "*********************************"
-export MODULE_NAME=jaxws-ee
-mkdir $RES/$MODULE_NAME
+mkdir $RES/jaxws-ee
 cd $TS_HOME/src/com/sun/ts/tests/jaxws/ee
-ant runclient > $RES/$MODULE_NAME/$MODULE_NAME-runclient.log
-cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTreport $RES/$MODULE_NAME
-cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTwork $RES/$MODULE_NAME
-cd /home/jimma/x1/code/JEETCK6
-./print-result.sh
-./jboss.sh restart
-sleep 60
+ant runclient > $RES/jaxws-ee/jaxws-ee-runclient.log
+cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTreport $RES/jaxws-ee
+cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTwork $RES/jaxws-ee
+echo ""  
+echo "************  jaxws-api  ****************************" | cut -c -40 >> $RESULT_FILE
+grep "Completed running" -A 3 $RES/jaxws-ee/jaxws-ee-runclient.log  | cut -c 18- >> $RESULT_FILE
