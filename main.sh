@@ -29,23 +29,35 @@ cd /home/jimma/x1/code/JEETCK6
 sleep 50
 
 echo "build reverse..."
-./5-build-reverse.sh
+#./5-build-reverse.sh
 
 #create final result file
 echo "---------JBossWS TCK6 Test Result($TEST_TIME)---------" > $RESULT_FILE 
 echo "" >> $RESULT_FILE
 
-./1-jaxws-api.sh
-./2-jaxws-ee.sh
-./3-jaxws-mapping.sh
-./4-jaxws-wsi.sh
-./5-jaxws-wsa.sh
-./6-jws.sh
-./7-saaj.sh
-./8-jaxrpc.sh
-./9-webservices.sh
-./10-webservices12.sh
-./11-webservices13.sh
+#./1-jaxws-api.sh &
+#./2-jaxws-ee.sh &
+./3-jaxws-mapping.sh &
+#./4-jaxws-wsi.sh &
+#./5-jaxws-wsa.sh &
+#./6-jws.sh &
+#./7-saaj.sh &
+#./8-jaxrpc.sh &
+#./9-webservices.sh &
+#./10-webservices12.sh &
+./11-webservices13.sh &
+
+cd $RES
+FILECOUNT=0
+while [ $FILECOUNT -lt 2 ] 
+do
+  FILECOUNT=$(find . -name "summary.txt" | wc -l)
+  echo "$FILECOUNT Test Module finished... waiting...." 
+  sleep 60;
+done
+echo "Tests finished...."
+
+
 #send result 
 echo " " >> $RESULT_FILE
 echo " " >> $RESULT_FILE
