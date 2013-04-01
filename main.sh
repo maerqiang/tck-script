@@ -7,9 +7,9 @@ echo "*********************************"
 ./0-prepare.sh
 
 echo "*********************************"
-echo "config-as7-create-cts..."
+echo "config-as8-create-cts..."
 echo "*********************************"
-./1-config-as7-create-cts.sh
+./1-config-as8-create-cts.sh
 
 echo "*********************************"
 echo "start-javadb.sh..."
@@ -41,7 +41,6 @@ echo "" >> $RESULT_FILE
 ./4-jaxws-wsi.sh
 ./5-jaxws-wsa.sh
 ./6-jws.sh
-#./6-jws-reverse.sh
 ./7-saaj.sh
 ./8-jaxrpc.sh
 ./9-webservices.sh
