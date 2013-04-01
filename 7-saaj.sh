@@ -1,11 +1,13 @@
 echo "*********************************"
 echo "run saaj tests..."
 echo "*********************************"
-mkdir $RES/saaj
+export MODULE_NAME=saaj
+mkdir $RES/$MODULE_NAME
 cd $TS_HOME/src/com/sun/ts/tests/saaj
-ant runclient > $RES/saaj/saaj-runclient.log
-cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTreport $RES/saaj
-cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTwork $RES/saaj
-echo ""  
-echo "************  saaj  ****************************" | cut -c -40 >> $RESULT_FILE
-grep "Completed running" -A 3 $RES/saaj/saaj-runclient.log  | cut -c 18- >> $RESULT_FILE
+ant runclient > $RES/$MODULE_NAME/$MODULE_NAME-runclient.log
+cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTreport $RES/$MODULE_NAME
+cp -r /home/jimma/x1/code/JEETCK6/tck6/trunk/bin/JTwork $RES/$MODULE_NAME
+cd /home/jimma/x1/code/JEETCK6
+./print-result.sh
+./jboss.sh restart
+sleep 60
